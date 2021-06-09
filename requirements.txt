@@ -11,7 +11,7 @@ grpcio==1.12.1
 html5lib==0.9999999
 Markdown==2.6.11
 mock==2.0.0
-networkx==1.11
+networkx>=2
 numpy==1.14.5
 pbr==4.0.4
 protobuf==3.6.0

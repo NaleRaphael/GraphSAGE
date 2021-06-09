@@ -206,8 +206,8 @@ class NodeMinibatchIterator(object):
         self.adj, self.deg = self.construct_adj()
         self.test_adj = self.construct_test_adj()
 
-        self.val_nodes = [n for n in self.G.nodes() if self.G.node[n]['val']]
-        self.test_nodes = [n for n in self.G.nodes() if self.G.node[n]['test']]
+        self.val_nodes = [n for n in self.G.nodes() if self.G.nodes[n]['val']]
+        self.test_nodes = [n for n in self.G.nodes() if self.G.nodes[n]['test']]
 
         self.no_train_nodes_set = set(self.val_nodes + self.test_nodes)
         self.train_nodes = set(G.nodes()).difference(self.no_train_nodes_set)
@@ -229,7 +229,7 @@ class NodeMinibatchIterator(object):
         deg = np.zeros((len(self.id2idx),))
 
         for nodeid in self.G.nodes():
-            if self.G.node[nodeid]['test'] or self.G.node[nodeid]['val']:
+            if self.G.nodes[nodeid]['test'] or self.G.nodes[nodeid]['val']:
                 continue
             neighbors = np.array([self.id2idx[neighbor] 
                 for neighbor in self.G.neighbors(nodeid)
